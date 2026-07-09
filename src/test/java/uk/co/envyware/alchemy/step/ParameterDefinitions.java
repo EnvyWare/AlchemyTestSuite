@@ -1,4 +1,4 @@
-package starter.stepdefinitions;
+package uk.co.envyware.alchemy.step;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
@@ -11,6 +11,21 @@ public class ParameterDefinitions {
     @ParameterType(".*")
     public Actor actor(String actorName) {
         return OnStage.theActorCalled(actorName);
+    }
+
+    @ParameterType(".*")
+    public String platform(String platformName) {
+        return platformName;
+    }
+
+    @ParameterType(".*")
+    public String exam(String examName) {
+        return examName;
+    }
+
+    @ParameterType(".*")
+    public String category(String categoryName) {
+        return categoryName;
     }
 
     @Before
