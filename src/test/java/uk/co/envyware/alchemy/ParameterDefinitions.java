@@ -1,10 +1,11 @@
-package uk.co.envyware.alchemy.step;
+package uk.co.envyware.alchemy;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+import uk.co.envyware.alchemy.navigation.Alchemy;
 
 public class ParameterDefinitions {
 
@@ -15,12 +16,12 @@ public class ParameterDefinitions {
 
     @ParameterType(".*")
     public String platform(String platformName) {
-        return platformName;
+        return Alchemy.getPlatformId(platformName);
     }
 
     @ParameterType(".*")
     public String exam(String examName) {
-        return examName;
+        return Alchemy.getExamId(examName);
     }
 
     @ParameterType(".*")
@@ -28,7 +29,7 @@ public class ParameterDefinitions {
         return categoryName;
     }
 
-    @ParameterType(".*")
+    @ParameterType("A|B|C|D")
     public String answer(String answerName) {
         return answerName;
     }

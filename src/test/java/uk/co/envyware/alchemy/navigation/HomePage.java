@@ -4,6 +4,8 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.targets.Target;
 import net.serenitybdd.screenplay.waits.WaitUntil;
@@ -43,6 +45,15 @@ public class HomePage {
 
     public static Target examCard(String platformId, String examId) {
         return EXAM_CARD_BY_ID.of(platformId, examId);
+    }
+
+    public static Performable open() {
+        return Task.where("{0} opens the Alchemy home page",
+                Open.browserOn().the(AlchemyHomePage.class));
+    }
+
+    public static Performable selectPlatform(String platform) {
+        return Click.on(HomePage.platformCard(platform));
     }
 
     public static Performable withPlatformCardsVisible(String platformId) {

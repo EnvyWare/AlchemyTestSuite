@@ -1,7 +1,8 @@
 package uk.co.envyware.alchemy.navigation;
 
-import net.serenitybdd.screenplay.Actor;
+import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.targets.Target;
 
 import java.util.regex.Pattern;
@@ -35,36 +36,51 @@ public class QuestionPage {
     public static final Target LEARNING_FEEDBACK_EXPLANATION = Target.the("learning feedback explanation section")
             .locatedBy("[data-testid='learning-feedback-explanation']");
 
+    public static final Target QUIZ_EXAM_TITLE = Target.the("quiz exam title")
+            .locatedBy("[data-testid='quiz-exam-title']");
+
     private static final Pattern QUESTION_ID_PATTERN = Pattern.compile("Question (\\d+) of (\\d+)");
     private static final Pattern QUIZ_TIMER_PATTERN = Pattern.compile("(Timer|Time spent): (\\d{1,2}:)?(\\d{1,2}):(\\d{1,2})");
 
 
-    public static Question<Integer> currentQuestionNumber(Actor actor) {
-        var questionIdText = QUESTION_ID.resolveFor(actor).getText();
-        var matcher = QUESTION_ID_PATTERN.matcher(questionIdText);
-
-        if (!matcher.matches()) {
-            throw new IllegalStateException("Question ID text does not match expected format: " + questionIdText);
-        }
-
+    public static Question<Integer> currentQuestionNumber() {
         return Question.about("current question number")
-                .answeredBy(a -> Integer.parseInt(matcher.group(1)));
+                .answeredBy(a -> {
+                    var questionIdText = QUESTION_ID.resolveFor(a).getText();
+                    var matcher = QUESTION_ID_PATTERN.matcher(questionIdText);
+
+                    if (!matcher.matches()) {
+                        throw new IllegalStateException("Question ID text does not match expected format: " + questionIdText);
+                    }
+
+                    return Integer.parseInt(matcher.group(1));
+                });
     }
 
-    public static Question<Integer> currentTime(Actor actor) {
-        var timerText = QUIZ_TIMER.resolveFor(actor).getText();
-        var matcher = QUIZ_TIMER_PATTERN.matcher(timerText);
-
-        if (!matcher.matches()) {
-            throw new IllegalStateException("Quiz timer text does not match expected format: " + timerText);
-        }
-
-        int hours = matcher.group(2) != null ? Integer.parseInt(matcher.group(2).replace(":", "")) : 0;
-        int minutes = Integer.parseInt(matcher.group(3));
-        int seconds = Integer.parseInt(matcher.group(4));
-
+    public static Question<Integer> currentTime() {
         return Question.about("current quiz time")
-                .answeredBy(a -> hours * (60 * 60) + minutes * 60 + seconds);
+                .answeredBy(a -> {
+                    var timerText = QUIZ_TIMER.resolveFor(a).getText();
+                    var matcher = QUIZ_TIMER_PATTERN.matcher(timerText);
+
+                    if (!matcher.matches()) {
+                        throw new IllegalStateException("Quiz timer text does not match expected format: " + timerText);
+                    }
+
+                    int hours = matcher.group(2) != null ? Integer.parseInt(matcher.group(2).replace(":", "")) : 0;
+                    int minutes = Integer.parseInt(matcher.group(3));
+                    int seconds = Integer.parseInt(matcher.group(4));
+
+                    return hours * (60 * 60) + minutes * 60 + seconds;
+                });
+    }
+
+    public static Performable selectAnswer(String optionLabel) {
+        return Click.on(answerButton(optionLabel));
+    }
+
+    public static Performable submitAnswer() {
+        return Click.on(SUBMIT_BUTTON);
     }
 
     public static Target answerButton(String optionLabel) {
@@ -76,5 +92,9 @@ public class QuestionPage {
                 .answeredBy(a -> QUIZ_CATEGORY.resolveFor(a).getText());
     }
 
+    public static Question<String> currentExamTitle() {
+        return Question.about("current quiz exam title")
+                .answeredBy(a -> QUIZ_EXAM_TITLE.resolveFor(a).getText());
+    }
 
 }
