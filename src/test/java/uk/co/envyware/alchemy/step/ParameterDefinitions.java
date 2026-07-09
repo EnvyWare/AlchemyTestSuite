@@ -28,6 +28,11 @@ public class ParameterDefinitions {
         return categoryName;
     }
 
+    @ParameterType(".*")
+    public String answer(String answerName) {
+        return answerName;
+    }
+
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new OnlineCast());

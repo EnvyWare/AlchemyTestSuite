@@ -156,4 +156,72 @@ public class WebsiteStepDefinitions {
         actor.should(GivenWhenThen.seeThat("question category", QuestionPage.currentCategory(), Matchers.equalTo(category)));
     }
 
+    @Given("{actor} is in learning mode for the {platform} {exam} exam")
+    public void isInLearningModeForTheSalesforceAdministratorExam(Actor actor, String platform, String exam) {
+        this.hasSelectedThePlatform(actor, platform);
+        this.platformExamIsAvailable(platform, exam);
+        this.startsLearningModeForThePlatformExam(actor, platform, exam);
+        this.shouldSeeTheLearningModeScreen(actor);
+    }
+
+    @When("{actor} selects the answer {answer}")
+    public void submitsTheAnswer(Actor actor, String answer) {
+        actor.attemptsTo(Click.on(QuestionPage.answerButton(answer)));
+    }
+
+    @When("{actor} submits the answer")
+    public void submitsTheAnswer(Actor actor) {
+        actor.attemptsTo(Click.on(QuestionPage.SUBMIT_BUTTON));
+    }
+
+    @Then("{actor} should see whether the answer was correct or incorrect")
+    public void seesWhetherTheAnswerWasCorrectOrIncorrect(Actor actor) {
+        actor.attemptsTo(WaitUntil.the(QuestionPage.LEARNING_FEEDBACK, WebElementStateMatchers.isVisible()).forNoMoreThan(2).seconds());
+    }
+
+    @Then("{actor} should not see whether the answer was correct or incorrect")
+    public void doesNotSeeWhetherTheAnswerWasCorrectOrIncorrect(Actor actor) {
+        actor.attemptsTo(WaitUntil.the(QuestionPage.LEARNING_FEEDBACK, WebElementStateMatchers.isNotVisible()).forNoMoreThan(2).seconds());
+    }
+
+    @Then("{actor} should see the explanation for the question")
+    public void seesTheExplanationForTheQuestion(Actor actor) {
+        actor.attemptsTo(WaitUntil.the(QuestionPage.LEARNING_FEEDBACK_EXPLANATION, WebElementStateMatchers.isVisible()).forNoMoreThan(2).seconds());
+    }
+
+    @Then("{actor} should be able to move to the next question")
+    public void canMoveToNextQuestion(Actor actor) {
+        actor.attemptsTo(WaitUntil.the(QuestionPage.NEXT_BUTTON, WebElementStateMatchers.isVisible()).forNoMoreThan(2).seconds());
+
+        var currentQuestionNumber = QuestionPage.currentQuestionNumber(actor).answeredBy(actor);
+
+        actor.attemptsTo(
+                Click.on(QuestionPage.NEXT_BUTTON),
+                WaitForTimer.toChangeFrom(() -> QuestionPage.currentQuestionNumber(actor).answeredBy(actor), currentQuestionNumber)
+        );
+
+        var newQuestionNumber = QuestionPage.currentQuestionNumber(actor);
+
+        actor.should(GivenWhenThen.seeThat("current quiz time", newQuestionNumber, Matchers.greaterThan(currentQuestionNumber)));
+    }
+
+    @Then("{actor} should be able to go back to the previous question")
+    public void canMoveToPreviousQuestion(Actor actor) {
+        actor.attemptsTo(
+                WaitUntil.the(QuestionPage.BACK_BUTTON, WebElementStateMatchers.isVisible()).forNoMoreThan(2).seconds(),
+                WaitUntil.the(QuestionPage.BACK_BUTTON, WebElementStateMatchers.isClickable()).forNoMoreThan(2).seconds()
+        );
+
+        var currentQuestionNumber = QuestionPage.currentQuestionNumber(actor).answeredBy(actor);
+
+        actor.attemptsTo(
+                Click.on(QuestionPage.BACK_BUTTON),
+                WaitForTimer.toChangeFrom(() -> QuestionPage.currentQuestionNumber(actor).answeredBy(actor), currentQuestionNumber)
+        );
+
+        var newQuestionNumber = QuestionPage.currentQuestionNumber(actor);
+
+        actor.should(GivenWhenThen.seeThat("current quiz time", newQuestionNumber, Matchers.lessThan(currentQuestionNumber)));
+    }
+
 }
