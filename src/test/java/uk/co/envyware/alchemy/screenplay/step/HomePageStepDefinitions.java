@@ -1,4 +1,4 @@
-package uk.co.envyware.alchemy.step;
+package uk.co.envyware.alchemy.screenplay.step;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,7 +8,7 @@ import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.hamcrest.Matchers;
-import uk.co.envyware.alchemy.navigation.HomePage;
+import uk.co.envyware.alchemy.screenplay.navigation.HomePage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 

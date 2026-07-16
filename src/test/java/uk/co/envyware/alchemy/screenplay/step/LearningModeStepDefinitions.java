@@ -1,4 +1,4 @@
-package uk.co.envyware.alchemy.step;
+package uk.co.envyware.alchemy.screenplay.step;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,9 +7,9 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import uk.co.envyware.alchemy.navigation.HomePage;
-import uk.co.envyware.alchemy.navigation.LearningMode;
-import uk.co.envyware.alchemy.navigation.QuestionPage;
+import uk.co.envyware.alchemy.screenplay.navigation.HomePage;
+import uk.co.envyware.alchemy.screenplay.navigation.LearningMode;
+import uk.co.envyware.alchemy.screenplay.navigation.QuestionPage;
 
 public class LearningModeStepDefinitions {
 

@@ -1,9 +1,9 @@
-package uk.co.envyware.alchemy.step;
+package uk.co.envyware.alchemy.screenplay.step;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.Actor;
-import uk.co.envyware.alchemy.navigation.HomePage;
+import uk.co.envyware.alchemy.screenplay.navigation.HomePage;
 
 public class PlatformStepDefinitions {
 

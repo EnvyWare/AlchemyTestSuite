@@ -1,3 +1,4 @@
+@pageobjects @screenplay
 Feature: Starting quiz modes
    Background:
       Given Daniel has selected the Salesforce platform

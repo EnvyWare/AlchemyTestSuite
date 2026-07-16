@@ -1,10 +1,10 @@
-package uk.co.envyware.alchemy.question;
+package uk.co.envyware.alchemy.screenplay.question;
 
 import net.serenitybdd.screenplay.Question;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import uk.co.envyware.alchemy.api.WaitForValue;
-import uk.co.envyware.alchemy.navigation.QuestionPage;
+import uk.co.envyware.alchemy.screenplay.navigation.QuestionPage;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 
@@ -20,6 +20,7 @@ public class TheQuizTimer {
 
                     actor.attemptsTo(
                             WaitForValue.toChangeFrom(
+                                    actor,
                                     firstValue,
                                     () -> QuestionPage.currentTime().answeredBy(actor)
                             )

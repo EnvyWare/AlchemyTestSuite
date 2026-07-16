@@ -1,11 +1,11 @@
-package uk.co.envyware.alchemy;
+package uk.co.envyware.alchemy.screenplay;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.ParameterType;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import uk.co.envyware.alchemy.navigation.Alchemy;
+import uk.co.envyware.alchemy.api.Alchemy;
 
 public class ParameterDefinitions {
 

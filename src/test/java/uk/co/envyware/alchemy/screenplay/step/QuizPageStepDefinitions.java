@@ -1,4 +1,4 @@
-package uk.co.envyware.alchemy.step;
+package uk.co.envyware.alchemy.screenplay.step;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,9 +8,8 @@ import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.hamcrest.Matchers;
 import uk.co.envyware.alchemy.api.WaitForValue;
-import uk.co.envyware.alchemy.navigation.HomePage;
-import uk.co.envyware.alchemy.navigation.QuestionPage;
-import uk.co.envyware.alchemy.question.TheQuizTimer;
+import uk.co.envyware.alchemy.screenplay.navigation.QuestionPage;
+import uk.co.envyware.alchemy.screenplay.question.TheQuizTimer;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -69,7 +68,7 @@ public class QuizPageStepDefinitions {
 
         actor.attemptsTo(
                 Click.on(QuestionPage.NEXT_BUTTON),
-                WaitForValue.toChangeFrom(currentQuestionNumber, () -> QuestionPage.currentQuestionNumber().answeredBy(actor))
+                WaitForValue.toChangeFrom(actor, currentQuestionNumber, () -> QuestionPage.currentQuestionNumber().answeredBy(actor))
         );
 
         var newQuestionNumber = QuestionPage.currentQuestionNumber();
@@ -88,7 +87,7 @@ public class QuizPageStepDefinitions {
 
         actor.attemptsTo(
                 Click.on(QuestionPage.BACK_BUTTON),
-                WaitForValue.toChangeFrom(currentQuestionNumber, () -> QuestionPage.currentQuestionNumber().answeredBy(actor))
+                WaitForValue.toChangeFrom(actor, currentQuestionNumber, () -> QuestionPage.currentQuestionNumber().answeredBy(actor))
         );
 
         var newQuestionNumber = QuestionPage.currentQuestionNumber();

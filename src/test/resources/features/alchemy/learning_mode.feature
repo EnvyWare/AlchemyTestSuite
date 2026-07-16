@@ -1,3 +1,4 @@
+@pageobjects @screenplay
 Feature: Learning Mode
 
    Scenario: learning mode gives immediate feedback after submitting an answer

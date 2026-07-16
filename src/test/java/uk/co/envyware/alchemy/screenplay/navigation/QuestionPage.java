@@ -1,4 +1,4 @@
-package uk.co.envyware.alchemy.navigation;
+package uk.co.envyware.alchemy.screenplay.navigation;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Question;

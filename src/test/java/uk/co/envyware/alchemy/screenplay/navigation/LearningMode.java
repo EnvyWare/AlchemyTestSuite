@@ -1,9 +1,10 @@
-package uk.co.envyware.alchemy.navigation;
+package uk.co.envyware.alchemy.screenplay.navigation;
 
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.matchers.WebElementStateMatchers;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import uk.co.envyware.alchemy.api.Alchemy;
 
 public class LearningMode {
 

@@ -1,3 +1,4 @@
+@pageobjects @screenplay
 Feature: Alchemy web page
 
    Scenario: loading the initial web page
@@ -12,4 +13,4 @@ Feature: Alchemy web page
    Scenario: clicking into google platform
       Given Daniel is doing exam practice
       When Daniel clicks the Google platform
-      But Daniel should not see exams appear
+      Then Daniel should not see exams appear

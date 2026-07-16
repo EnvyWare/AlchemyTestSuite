@@ -1,6 +1,4 @@
-package uk.co.envyware.alchemy.navigation;
-
-import net.serenitybdd.screenplay.Actor;
+package uk.co.envyware.alchemy.api;
 
 import java.util.Locale;
 
