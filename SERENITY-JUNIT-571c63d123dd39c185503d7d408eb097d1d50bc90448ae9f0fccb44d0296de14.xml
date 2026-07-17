@@ -1,1 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Alchemy web page" skipped="0" tests="3" time="9.99" timestamp="2026-07-17 10:01:13"><testcase name="loading the initial web page"/><testcase name="clicking into google platform"/><testcase name="clicking into salesforce platform"/></testsuite>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Checking the questions end point returns questions for the correct exam</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff"><link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-3.7.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- JQuery-UI -->
+<link type="text/css" href="jquery-ui-1.14.1/jquery-ui.css" rel="Stylesheet" />
+<script type="text/javascript" src="jquery-ui-1.14.1/jquery-ui.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/2.3.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/2.3.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/2.3.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<!-- ImgPreview -->
+<script src="scripts/imgpreview.full.jquery.js" type="text/javascript"></script>
+</head>
+
+<body class="results-page">
+
+
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity and Cucumber Quick Start</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+        <span class="breadcrumbs">
+            <a href="index.html" class="breadcrumbs">Home</a>
+
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="f6c683e2fb606d80c6c6b1f17ace14686ecc902de692d0d26bfc73951e37a1c2.html">
+            Alchemy
+        </a>
+ <!-- inflection.of(breadcrumb.displayName).asATitle()-->
+            > <a href="0430e5f4ec2980d4251ac9386c74f30e392462552f72b25e690bb58ee329b24b.html">
+            Alchemy REST API page
+        </a>
+        >
+            Checking the questions end point returns questions for the correct exam
+        </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="7ea0a5e2d679b9deeda9910ae4a9bcd3a281e0d908303a9e16e486103e98880c.html"><i class="bi bi-chat-text"></i> Capabilities</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 17-07-2026 14:03</span>
+    <br style="clear:left"/>
+</div>
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                                <div>
+                                    <h3 class="discreet-story-header">
+                                        <i class="fs-2 bi bi-chat-left-quote title-icon"></i>
+                                        <span class="story-header-title">Alchemy REST API Page </span>
+                                    </h3>
+
+                                </div>
+
+                        </td>
+                        <td valign="top">
+                            <p class="tag">
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="2a5b6a7be0f08df02d8ab0b4d4c68648c2695c6c7ef0658c71de4d42b1415b18.html">Under 1 Second
+                                              (Duration)
+                                        </a>
+                                </span>
+                                    <span class="badge example-tag tag-badge" style="background:default;">
+                                    <i class="bi bi-tag-fill"></i>&nbsp;
+                                        <a class="tagLink" style="background:default;"
+                                           href="fc9965055b6dc878cced047b18192ddf6c55c82c5673c82cb57860a26c084204.html">Restassured
+                                        </a>
+                                </span>
+                                    
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">
+                                    Checking the questions end point returns questions for the correct exam
+                                        <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+</div>
+</div>
+
+<div class="clr"></div>
+
+
+<div id="beforetable"></div>
+
+
+<div id="tablecontents">
+    <div>
+        <table class="step-table">
+            <tr class="step-titles">
+                <th width="65">
+                </th>
+                <th class="step-description-column greentext">
+                    Steps
+                </th>
+
+                <th width="130" class="greentext">Outcome</th>
+                <th width="100" class="greentext"><i title="Duration" class="bi bi-stopwatch"></i></th>
+            </tr>
+            <tr class="step-table-separator">
+                <td colspan="5"></td>
+            </tr>
+
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0 success-icon"
+                                   style="margin-left: 20px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
+                               style="display:block;">
+                                <span class="top-level-step">
+                                                When I get questions for the Salesforce Administrator exam
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">947ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="70" class="step-icon">
+                        <a name="0-0"></a>
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block">
+                                <i class="bi bi-caret-right-square imgstepSection0-0 success-icon"
+                                   style="margin-left: 40px; float:left; padding-right:5px"></i>
+                            </a>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                            <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
+                               style="display:block;">
+                                <span class="nested-step">
+                                                Get questions for exam
+                                        </span>
+                            </a>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-step">941ms</span></td>
+                </tr>
+                    <tr>
+                        <td colspan="5">
+                            <table id="stepSection0-0" class="step-table-nested" style="display:none;">
+                <tr class="test-SUCCESS">
+
+                    <td width="90" class="step-icon">
+                        <a name="0-0-0"></a>
+                            <span style="margin-left: 60px;"
+                                  class="nested-group-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="nested-group-step">
+                                                GET https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/questions?platform=SF&amp;exam=ADMIN
+                                        </span>
+                            <span class="evidence">
+                                        <span class="piece-of-evidence">
+                <span>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="collapse"
+                                data-target="#restModal-REST-3">
+                            REST Query
+                        </button>
+                    </span>
+                <!-- Modal -->
+                <div class="rest-query-details">
+                    <div class="collapse multi-collapse" id="restModal-REST-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Response</h4>
+                                    <p>URL: https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/questions?platform=SF&exam=ADMIN</p>
+                                    <p>Status code: 200</p>
+                                    <p>Content Type: null</p>
+                                    <h4>Request Headers</h4>
+                                    <pre>Accept=*/*</pre>
+                                    <h4>Response Headers</h4>
+                                    <pre>Date: Fri, 17 Jul 2026 14:03:14 GMT<br>Content-Type: application/json<br>Content-Length: 53902<br>Connection: keep-alive<br>Apigw-Requestid: Ap1legbvgi0EMLw=</pre>
+                                <h4>Response Body</h4>
+                                    <pre>[<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Setup Audit Trail&quot;,<br>            &quot;B&quot;: &quot;Change Set validation&quot;,<br>            &quot;C&quot;: &quot;Conversation Preview&quot;,<br>            &quot;D&quot;: &quot;Bot Performance Dashboard&quot;,<br>            &quot;E&quot;: &quot;Flow Debug only&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Conversation Preview lets admins simulate user input and inspect topic/action selection before activation.&quot;,<br>        &quot;category&quot;: &quot;Agentforce&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Agentforce&quot;,<br>        &quot;QuestionText&quot;: &quot;A department at Crescent Financial reports a problem to Nina, the sales operations analyst. The business wants the most standard declarative solution. An admin wants to test whether a new Topic routes correctly without making live data changes. Which Agent Builder feature should be used?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_459&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Create a criteria-based sharing rule for all closed records&quot;,<br>            &quot;B&quot;: &quot;Enable Grant Access Using Hierarchies on Opportunity&quot;,<br>            &quot;C&quot;: &quot;The report scope/filter such as My Opportunities versus My Team's Opportunities&quot;,<br>            &quot;D&quot;: &quot;Assign View All Data&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;For standard objects such as Opportunity, hierarchy access is built in. If data is missing in a report, the report scope/filter is often the issue.&quot;,<br>        &quot;category&quot;: &quot;Configuration and Setup&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Configuration and Setup&quot;,<br>        &quot;QuestionText&quot;: &quot;George is the operations manager at Pioneer Health Systems. The team prefers a native Salesforce feature rather than custom code. A manager cannot see a subordinate's Opportunities in a report even though the Opportunity OWD is Private and the subordinate is below them in the role hierarchy. What should be checked first?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_389&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Company Locale&quot;,<br>            &quot;B&quot;: &quot;Fiscal Year start month only&quot;,<br>            &quot;C&quot;: &quot;Fiscal Year Name based on the ending month&quot;,<br>            &quot;D&quot;: &quot;Corporate Currency&quot;,<br>            &quot;E&quot;: &quot;Custom Period Label&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Standard Fiscal Year settings include whether the fiscal year is named by the starting or ending month/year.&quot;,<br>        &quot;category&quot;: &quot;Configuration and Setup&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Configuration and Setup&quot;,<br>        &quot;QuestionText&quot;: &quot;While testing a new rollout at Summit Logistics, Priya discovers a configuration gap. The solution should minimize long-term maintenance. A fiscal year starts in February but reports should label the year by the calendar year in which it ends. Which setting controls this?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_371&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Enable Collapsible Sections in User Interface settings&quot;,<br>            &quot;B&quot;: &quot;Use Search Layouts&quot;,<br>            &quot;C&quot;: &quot;Set every section to Always Open&quot;,<br>            &quot;D&quot;: &quot;Enable Compact View&quot;,<br>            &quot;E&quot;: &quot;Create more record types&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;A&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;The collapsible sections setting lets users expand/collapse page layout sections. Dynamic Forms has its own behavior.&quot;,<br>        &quot;category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;QuestionText&quot;: &quot;After a process change at BrightPath Education, Rachel needs to choose the most maintainable Salesforce configuration. The team prefers a native Salesforce feature rather than custom code. Users complain that page layout sections are too long and should be collapsible. Which setting is relevant when using the standard Record Detail component?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_604&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Share the list view with a Public Group&quot;,<br>            &quot;B&quot;: &quot;Change the Account OWD to Public Read Only&quot;,<br>            &quot;C&quot;: &quot;Create a dashboard folder for the list view&quot;,<br>            &quot;D&quot;: &quot;Assign a compact layout to the group&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;A&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;List views can be shared with specific users, roles, or public groups. OWD changes record access for everyone, dashboard folders do not manage list view visibility, and compact layouts affect record highlights.&quot;,<br>        &quot;category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;QuestionText&quot;: &quot;A team at Atlas Legal Group Public Sector Division wants to share a list view of high-priority accounts with a specific group of users without making the list view visible to the entire organization. What should the administrator use?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_727&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Both tasks and events can be owned by queues&quot;,<br>            &quot;B&quot;: &quot;Events can be queue-owned if public calendars are enabled&quot;,<br>            &quot;C&quot;: &quot;Tasks can be queue-owned; Events cannot be queue-owned&quot;,<br>            &quot;D&quot;: &quot;Neither tasks nor events can use queues&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Tasks may be assigned to queues; events represent calendar time and are owned by users/calendars.&quot;,<br>        &quot;category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;QuestionText&quot;: &quot;During a configuration review at Meridian Partners, Zoe, the system administrator, is asked to make a change. The business wants the most standard declarative solution. A task list should be shared for a pool of agents, but scheduled meetings should remain on individual calendars. Which statement is true?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_426&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Call Apex directly&quot;,<br>            &quot;B&quot;: &quot;Field Update&quot;,<br>            &quot;C&quot;: &quot;Email Alert&quot;,<br>            &quot;D&quot;: &quot;Create Record&quot;,<br>            &quot;E&quot;: &quot;Send Custom Notification directly&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;B&quot;,<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Standard approval actions include field updates and email alerts; record creation or direct Apex invocation is not a standard approval action.&quot;,<br>        &quot;category&quot;: &quot;Automation&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Automation&quot;,<br>        &quot;QuestionText&quot;: &quot;During a configuration review at Silverline Travel, Daniel, the CRM administrator, is asked to make a change. The solution should minimize long-term maintenance. An approval process should update Status and send a standardized candidate email when finally rejected. Which two final rejection actions apply? (Select Two)&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_585&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Use Final Rejection Actions to submit the record again&quot;,<br>            &quot;B&quot;: &quot;Use Initial Submission Actions to unlock the record&quot;,<br>            &quot;C&quot;: &quot;Set the rejection behavior on Step 3 to go back to the previous step&quot;,<br>            &quot;D&quot;: &quot;Create a record-triggered flow to recreate the approval request&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Approval steps can be configured so rejection goes back to the previous step rather than performing all rejection actions. Final rejection actions end the approval process, while flows or initial submission actions are unnecessary for this native behavior.&quot;,<br>        &quot;category&quot;: &quot;Automation&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Automation&quot;,<br>        &quot;QuestionText&quot;: &quot;Nimbus Retail Digital Division has a three-step approval process. If the request is rejected at Step 3, it should return to Step 2 for correction instead of ending the process and performing final rejection actions. What should the administrator configure?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_812&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Add a custom button to a page layout&quot;,<br>            &quot;B&quot;: &quot;Create an object-specific action on Feedback only&quot;,<br>            &quot;C&quot;: &quot;Create a global action and add it to the Global Publisher Layout&quot;,<br>            &quot;D&quot;: &quot;Add the action to the Feedback compact layout&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Global actions appear in the global action menu and are not tied to a specific record context.&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;QuestionText&quot;: &quot;A department at Keystone Capital reports a problem to Victor, the business systems administrator. The solution should minimize long-term maintenance. Users need to create a Feedback record from anywhere in Lightning or mobile, not from a specific parent record. Where should the admin place the action?&quot;,<br>        &quot;category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_113&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Tabular Report&quot;,<br>            &quot;B&quot;: &quot;Matrix Report&quot;,<br>            &quot;C&quot;: &quot;List View&quot;,<br>            &quot;D&quot;: &quot;Joined Report without groupings&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;B&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Matrix reports support grouping data by both rows and columns, making them useful for cross-tab summaries. Tabular reports are flat lists, joined reports combine blocks, and list views are not full report summaries.&quot;,<br>        &quot;category&quot;: &quot;Data and Analytics Management&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Data and Analytics Management&quot;,<br>        &quot;QuestionText&quot;: &quot;The analytics team at Nimbus Retail Northern Division wants to display monthly totals and a grand total for revenue, grouped by both Region and Product Family. Which report format best supports grouping by rows and columns?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_750&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Create bucket columns&quot;,<br>            &quot;B&quot;: &quot;Change tab names and labels&quot;,<br>            &quot;C&quot;: &quot;Rename the object fields globally&quot;,<br>            &quot;D&quot;: &quot;Create row-level formulas&quot;,<br>            &quot;E&quot;: &quot;Change the field Display As labels in the Custom Report Type layout&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;E&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;The Custom Report Type layout can rename fields with Display As without changing object-level field labels.&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;QuestionText&quot;: &quot;During a configuration review at BrightPath Education, Owen, the sales operations analyst, is asked to make a change. The business wants the most standard declarative solution. A Custom Report Type shows two fields both labeled Status from different objects. How can the admin clarify them only for reports using that report type?&quot;,<br>        &quot;category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_252&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;No active Case Assignment Rule entry matched the case&quot;,<br>            &quot;B&quot;: &quot;The queue has no active members&quot;,<br>            &quot;C&quot;: &quot;Validation rules changed the owner after creation&quot;,<br>            &quot;D&quot;: &quot;The default owner lacks Modify All Data&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;A&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;If no assignment rule entry matches, Salesforce uses the default case owner.&quot;,<br>        &quot;category&quot;: &quot;Service and Support Applications&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Service and Support Applications&quot;,<br>        &quot;QuestionText&quot;: &quot;While testing a new rollout at Evergreen Equipment, Zoe discovers a configuration gap. The change should not introduce unnecessary custom objects or Apex. A Web-to-Case record is assigned to the Default Case Owner rather than the expected queue. What is the most likely cause?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_392&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Data Export Service&quot;,<br>            &quot;B&quot;: &quot;Case Auto-Response Rule&quot;,<br>            &quot;C&quot;: &quot;Dashboard refresh only&quot;,<br>            &quot;D&quot;: &quot;List View Chart&quot;,<br>            &quot;E&quot;: &quot;Report Subscription&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;E&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Report subscriptions email report results on a schedule and can include conditions.&quot;,<br>        &quot;category&quot;: &quot;Data and Analytics Management&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Data and Analytics Management&quot;,<br>        &quot;QuestionText&quot;: &quot;The leadership team at Meridian Partners asks Marcus, the sales operations analyst, to adjust Salesforce. The existing configuration should be reused where possible. A user wants to receive a report by email on Monday mornings if there are rows matching the criteria. Which feature should be configured?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_432&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Search Layout&quot;,<br>            &quot;B&quot;: &quot;Compact Layout&quot;,<br>            &quot;C&quot;: &quot;Salesforce Navigation menu for the Lightning app&quot;,<br>            &quot;D&quot;: &quot;Dashboard folder sharing&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;C&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;The mobile navigation experience is driven by the navigation items configured for the Lightning app. Compact layouts affect record highlights, search layouts affect search results, and dashboard folder sharing controls dashboard access.&quot;,<br>        &quot;category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Productivity and Collaboration&quot;,<br>        &quot;QuestionText&quot;: &quot;A mobile-first sales team at MetroLink Utilities Partner Division says the object they use most is buried several taps deep in the Salesforce mobile app. Which configuration controls the primary navigation items for mobile users?&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_720&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Dashboard filter&quot;,<br>            &quot;B&quot;: &quot;Kanban totals only&quot;,<br>            &quot;C&quot;: &quot;Report Chart component on the record page&quot;,<br>            &quot;D&quot;: &quot;List View Charts&quot;,<br>            &quot;E&quot;: &quot;Search Layout chart settings&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;D&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;List view charts provide quick chart visualizations from a list view.&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Sales and Marketing Applications&quot;,<br>        &quot;QuestionText&quot;: &quot;A department at Meridian Partners reports a problem to Victor, the system administrator. The requirement must respect normal Salesforce security behavior. Users want a donut chart of Opportunities by Stage directly from a list view without opening Reports. What should they use?&quot;,<br>        &quot;category&quot;: &quot;Sales and Marketing Applications&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_154&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;Add a visibility filter to the Delete action based on the viewing user's profile&quot;,<br>            &quot;B&quot;: &quot;Enable/upgrade the Highlights Panel to Dynamic Actions&quot;,<br>            &quot;C&quot;: &quot;Remove Delete from the page layout for all users&quot;,<br>            &quot;D&quot;: &quot;Hide the entire Highlights Panel from non-admins&quot;,<br>            &quot;E&quot;: &quot;Create a validation rule blocking deletes&quot;<br>        },<br>        &quot;CorrectAnswers&quot;: [<br>            &quot;A&quot;,<br>            &quot;B&quot;<br>        ],<br>        &quot;Reasoning&quot;: &quot;Dynamic Actions control individual action visibility in Lightning App Builder. Hiding the whole panel or changing page layouts is too broad.&quot;,<br>        &quot;Status&quot;: &quot;APPROVED&quot;,<br>        &quot;PK&quot;: &quot;EXAM#ADMIN&quot;,<br>        &quot;Category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;QuestionText&quot;: &quot;George is the sales operations analyst at Apex Manufacturing. The change should not introduce unnecessary custom objects or Apex. The Delete action should be visible only to System Administrators on a Lightning record page without creating separate layouts. Which two steps are needed? (Select Two)&quot;,<br>        &quot;category&quot;: &quot;Object Manager and Lightning App Builder&quot;,<br>        &quot;SK&quot;: &quot;QUESTION#Q_249&quot;<br>    },<br>    {<br>        &quot;Answers&quot;: {<br>            &quot;A&quot;: &quot;A fault path from the callout/action eleme<br><br>[Response truncated - exceeded 16384 bytes]</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                        </span>
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="nested-group-step">SUCCESS</span></td>
+                    <td width="100"><span class="nested-group-step"></span></td>
+                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="1"></a>
+                            <span style="margin-left: 20px;"
+                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="top-level-step">
+                                                Then the response should give code 200
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">001ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="2"></a>
+                            <span style="margin-left: 20px;"
+                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="top-level-step">
+                                                And there should be 65 questions
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">010ms</span></td>
+                </tr>
+                <tr class="test-SUCCESS">
+
+                    <td width="50" class="step-icon">
+                        <a name="3"></a>
+                            <span style="margin-left: 20px;"
+                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
+                                </span>
+                    </td>
+
+                    <td class="step-description-column">
+                        <div class="step-description">
+                                <span class="top-level-step">
+                                                And the questions should be for the Administrator exam
+                                        </span>
+                            <span class="evidence">
+                                </span>
+                        </div>
+                    </td>
+
+                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
+                    <td width="100"><span class="top-level-step">020ms</span></td>
+                </tr>
+            <tr class="test-SUCCESS">
+                    <td colspan="2"></td>
+                <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
+                <td width="100"><span class="top-level-step"><em>0.98s</em></span></td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div id="beforefooter"></div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <span class="version">Serenity BDD version 5.3.8</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function toggleDiv(divId) {
+        $("#" + divId).toggle();
+        var $icon = $(".img" + divId);
+        $icon.toggleClass("bi-caret-right-square");
+        $icon.toggleClass("bi-caret-down-square");
+    }
+</script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+
+    $(document).ready(function () {
+        $('img.screenshot').imgPreview({
+            imgCSS: {
+                width: '500px'
+            },
+            distanceFromCursor: {top: 10, left: -200}
+        });
+    });
+
+    //]]>
+</script>
+<div id="imgPreviewContainer" style="position: absolute; top: 612px; left: 355px; display: none; " class=""><img
+            src="" style="display: none; "></div>
+<div id="imgPreviewContainer2" style="position: absolute; top: 925px; left: 320px; display: none; " class="">
+    <img style="width: 200px; display: none; " src=""></div>
+<div id="imgPreviewWithStyles" style="position: absolute; top: 1272px; left: 321px; display: none; " class="">
+    <img style="height: 200px; opacity: 1; display: none; " src=""></div>
+<div id="imgPreviewWithStyles2" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+<div id="imgPreviewWithStyles3" style="display: none; position: absolute; "><img style="height: 200px; "></div>
+
+</div>
+</body>
+</html>
