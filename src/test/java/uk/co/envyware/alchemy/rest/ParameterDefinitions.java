@@ -14,6 +14,26 @@ public class ParameterDefinitions {
         return Integer.parseInt(code);
     }
 
+    @ParameterType("[0-9]+")
+    public int size(String size) {
+        return Integer.parseInt(size);
+    }
+
+    @ParameterType(".*")
+    public String platform(String platformName) {
+        return Alchemy.getPlatformId(platformName);
+    }
+
+    @ParameterType(".*")
+    public String exam(String examName) {
+        return Alchemy.getExamId(examName);
+    }
+
+    @ParameterType("[^\"]+")
+    public String error(String error) {
+        return error;
+    }
+
     @Before
     public void setTheStage() {
         OnStage.setTheStage(new OnlineCast());
