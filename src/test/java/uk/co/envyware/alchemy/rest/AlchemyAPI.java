@@ -40,5 +40,24 @@ public class AlchemyAPI {
         SerenityRest.given().get(BASE_URL + QUESTIONS);
     }
 
+    @Step("Get questions for exam")
+    public void getQuestionsForExam(String platform, String exam) {
+        SerenityRest.given()
+                .baseUri(BASE_URL + QUESTIONS)
+                .queryParam("platform", platform)
+                .queryParam("exam", exam)
+                .get();
+    }
+
+    @Step("Get category questions for exam")
+    public void getQuestionsForExam(String platform, String exam, String category) {
+        SerenityRest.given()
+                .baseUri(BASE_URL + QUESTIONS)
+                .queryParam("platform", platform)
+                .queryParam("exam", exam)
+                .queryParam("category", category)
+                .get();
+    }
+
 
 }

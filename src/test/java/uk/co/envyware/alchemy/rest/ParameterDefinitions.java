@@ -29,6 +29,11 @@ public class ParameterDefinitions {
         return Alchemy.getExamId(examName);
     }
 
+    @ParameterType(".*")
+    public String category(String category) {
+        return category;
+    }
+
     @ParameterType("[^\"]+")
     public String error(String error) {
         return error;

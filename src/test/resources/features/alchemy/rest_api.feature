@@ -31,3 +31,16 @@ Feature: Alchemy REST API page
         When I send an invalid request to the questions end point
         Then the response should give code 400
         And I get the error "Missing 'exam' query parameter (e.g., ?exam=SF-ADMIN)"
+
+    Scenario: Checking the questions end point returns questions for the correct exam
+        When I get questions for the Salesforce Administrator exam
+        Then the response should give code 200
+        And there should be 65 questions
+        And the questions should be for the Administrator exam
+
+    Scenario: Checking the questions end point returns questions for a specific category
+        When I get category questions for the Salesforce Administrator exam Automation category
+        Then the response should give code 200
+        And there should be 65 questions
+        And the questions should be for the Administrator exam
+        And the questions should be in the Automation category

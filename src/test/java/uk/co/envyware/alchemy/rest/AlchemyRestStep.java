@@ -79,6 +79,41 @@ public class AlchemyRestStep {
         );
     }
 
+    @When("I get questions for the {platform} {exam} exam")
+    public void getQuestionsForExam(String platform, String exam) {
+        this.alchemyAPI.getQuestionsForExam(platform, exam);
+    }
+
+    @Then("there should be {int} questions")
+    public void checkQuestionCount(int questions) {
+        restAssuredThat(response -> response
+                .contentType(ContentType.JSON)
+                .body("", Matchers.hasSize(questions))
+        );
+    }
+
+
+    @Then("the questions should be for the {exam} exam")
+    public void checkQuestionCount(String exam) {
+        restAssuredThat(response -> response
+                .contentType(ContentType.JSON)
+                .body("PK", Matchers.everyItem(Matchers.equalTo("EXAM#" + exam)))
+        );
+    }
+
+    @When("I get category questions for the {platform} {exam} exam {category} category")
+    public void getCategoryQuestions(String platform, String exam, String category) {
+        this.alchemyAPI.getQuestionsForExam(platform, exam, category);
+    }
+
+    @Then("the questions should be in the {category} category")
+    public void checkQuestionCategory(String category) {
+        restAssuredThat(response -> response
+                .contentType(ContentType.JSON)
+                .body("Category", Matchers.everyItem(Matchers.equalTo(category)))
+        );
+    }
+
 
 
 }
