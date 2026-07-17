@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>Checking the platforms end point should return a list that contains salesforce</title>
+    <title>Checking unauthenticated post to exams end point fails</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
@@ -130,7 +130,7 @@
             Alchemy REST API page
         </a>
         >
-            Checking the platforms end point should return a list that contains salesforce
+            Checking unauthenticated post to exams end point fails
         </span>
         </div>
         <div class="rightbg"></div>
@@ -180,7 +180,7 @@
                                     <span class="badge example-tag tag-badge" style="background:default;">
                                     <i class="bi bi-tag-fill"></i>&nbsp;
                                         <a class="tagLink" style="background:default;"
-                                           href="6c5512236937b92cd7a296b24edb966c2bd94be46b8910f8b129a42d6150eb25.html">1 To 10 Seconds
+                                           href="2a5b6a7be0f08df02d8ab0b4d4c68648c2695c6c7ef0658c71de4d42b1415b18.html">Under 1 Second
                                               (Duration)
                                         </a>
                                 </span>
@@ -203,7 +203,7 @@
                             <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
                             <span class="test-case-title">
                                 <span class="success-color">
-                                    Checking the platforms end point should return a list that contains salesforce
+                                    Checking unauthenticated post to exams end point fails
                                         <span class="related-issue-title"></span>
                                 </span>
                             </span>
@@ -258,7 +258,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0')"
                                style="display:block;">
                                 <span class="top-level-step">
-                                                When I get the platforms
+                                                When I upload an exam
                                         </span>
                             </a>
                             <span class="evidence">
@@ -267,7 +267,7 @@
                     </td>
 
                     <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">2s 799ms</span></td>
+                    <td width="100"><span class="top-level-step">525ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -288,7 +288,7 @@
                             <a href="javaScript:void(0)" onClick="toggleDiv('stepSection0-0')"
                                style="display:block;">
                                 <span class="nested-step">
-                                                Get platforms from end point
+                                                Upload an unauthenticated exam
                                         </span>
                             </a>
                             <span class="evidence">
@@ -297,7 +297,7 @@
                     </td>
 
                     <td width="130"><span class="nested-step">SUCCESS</span></td>
-                    <td width="100"><span class="nested-step">2s 549ms</span></td>
+                    <td width="100"><span class="nested-step">520ms</span></td>
                 </tr>
                     <tr>
                         <td colspan="5">
@@ -314,7 +314,7 @@
                     <td class="step-description-column">
                         <div class="step-description">
                                 <span class="nested-group-step">
-                                                GET https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/platforms
+                                                POST https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/exams
                                         </span>
                             <span class="evidence">
                                         <span class="piece-of-evidence">
@@ -330,15 +330,15 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4>Response</h4>
-                                    <p>URL: https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/platforms</p>
-                                    <p>Status code: 200</p>
-                                    <p>Content Type: null</p>
+                                    <p>URL: https://vamcjbi1o9.execute-api.eu-north-1.amazonaws.com/exams</p>
+                                    <p>Status code: 401</p>
+                                    <p>Content Type: application/x-www-form-urlencoded</p>
                                     <h4>Request Headers</h4>
-                                    <pre>Accept=*/*</pre>
+                                    <pre>Accept=*/*<br>Content-Type=application/x-www-form-urlencoded; charset=ISO-8859-1</pre>
                                     <h4>Response Headers</h4>
-                                    <pre>Date: Fri, 17 Jul 2026 14:28:27 GMT<br>Content-Type: application/json<br>Content-Length: 2008<br>Connection: keep-alive<br>Apigw-Requestid: Ap5R0glsgi0EJGA=</pre>
+                                    <pre>Date: Fri, 17 Jul 2026 14:28:27 GMT<br>Content-Type: application/json<br>Content-Length: 26<br>Connection: keep-alive<br>www-authenticate: Bearer<br>apigw-requestid: Ap5R6iRNgi0EJLQ=</pre>
                                 <h4>Response Body</h4>
-                                    <pre>[<br>    {<br>        &quot;SK&quot;: &quot;METADATA&quot;,<br>        &quot;PlatformIcon&quot;: &quot;https://alchemy-assets-bucket.s3.eu-north-1.amazonaws.com/icons/e103ceb2ce_gcp.jpeg&quot;,<br>        &quot;PlatformDescription&quot;: &quot;Google Cloud Platform (GCP) is a comprehensive suite of public cloud computing services offered by Google that allows users to build, deploy, and scale applications, websites, and services on the same global infrastructure that Google uses internally for products like Google Search, Gmail, and YouTube&quot;,<br>        &quot;PK&quot;: &quot;PLATFORM#GCP&quot;,<br>        &quot;PlatformName&quot;: &quot;Google Cloud Platform&quot;<br>    },<br>    {<br>        &quot;SK&quot;: &quot;METADATA&quot;,<br>        &quot;PlatformIcon&quot;: &quot;https://alchemy-assets-bucket.s3.eu-north-1.amazonaws.com/icons/77ed552f0e_salesforce.png&quot;,<br>        &quot;PlatformDescription&quot;: &quot;Salesforce is a cloud-based customer relationship management (CRM) platform that unifies sales, service, marketing, and operations with AI-powered tools to enhance business efficiency and customer engagement.&quot;,<br>        &quot;PK&quot;: &quot;PLATFORM#SF&quot;,<br>        &quot;PlatformName&quot;: &quot;Salesforce&quot;<br>    },<br>    {<br>        &quot;SK&quot;: &quot;METADATA&quot;,<br>        &quot;PlatformIcon&quot;: &quot;https://alchemy-assets-bucket.s3.eu-north-1.amazonaws.com/icons/ef00048dcb_images.png&quot;,<br>        &quot;PlatformDescription&quot;: &quot;Microsoft Azure is a comprehensive public cloud computing platform developed by Microsoft. It provides over 200 integrated services—including compute, storage, networking, and artificial intelligence—allowing businesses to build, deploy, and manage applications globally without maintaining physical datacenters.&quot;,<br>        &quot;PK&quot;: &quot;PLATFORM#AZURE&quot;,<br>        &quot;PlatformName&quot;: &quot;Microsoft Azure&quot;<br>    },<br>    {<br>        &quot;SK&quot;: &quot;METADATA&quot;,<br>        &quot;PlatformIcon&quot;: &quot;https://alchemy-assets-bucket.s3.eu-north-1.amazonaws.com/icons/ff07358838_8968d0640f2c4053333ce7334314ef83.webp&quot;,<br>        &quot;PlatformDescription&quot;: &quot;Amazon Web Services (AWS) is a comprehensive, globally adopted cloud computing platform. It provides on-demand IT infrastructure services—including computing power, storage, databases, and AI—on a flexible, pay-as-you-go pricing model. It eliminates the need to maintain expensive physical data &quot;,<br>        &quot;PK&quot;: &quot;PLATFORM#AWS&quot;,<br>        &quot;PlatformName&quot;: &quot;Amazon Web Services&quot;<br>    }<br>]</pre>
+                                    <pre>{<br>    &quot;message&quot;: &quot;Unauthorized&quot;<br>}</pre>
                             </div>
                         </div>
                     </div>
@@ -371,7 +371,7 @@
                     <td class="step-description-column">
                         <div class="step-description">
                                 <span class="top-level-step">
-                                                Then the response should give code 200
+                                                Then the response should give code 401
                                         </span>
                             <span class="evidence">
                                 </span>
@@ -379,56 +379,12 @@
                     </td>
 
                     <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">006ms</span></td>
-                </tr>
-                <tr class="test-SUCCESS">
-
-                    <td width="50" class="step-icon">
-                        <a name="2"></a>
-                            <span style="margin-left: 20px;"
-                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                    </td>
-
-                    <td class="step-description-column">
-                        <div class="step-description">
-                                <span class="top-level-step">
-                                                And there should be a list of minimum size 1
-                                        </span>
-                            <span class="evidence">
-                                </span>
-                        </div>
-                    </td>
-
-                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">085ms</span></td>
-                </tr>
-                <tr class="test-SUCCESS">
-
-                    <td width="50" class="step-icon">
-                        <a name="3"></a>
-                            <span style="margin-left: 20px;"
-                                  class="top-level-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon ' title='SUCCESS'></i></a>
-                                </span>
-                    </td>
-
-                    <td class="step-description-column">
-                        <div class="step-description">
-                                <span class="top-level-step">
-                                                And it should contain the Salesforce platform
-                                        </span>
-                            <span class="evidence">
-                                </span>
-                        </div>
-                    </td>
-
-                    <td width="130"><span class="top-level-step">SUCCESS</span></td>
-                    <td width="100"><span class="top-level-step">327ms</span></td>
+                    <td width="100"><span class="top-level-step"></span></td>
                 </tr>
             <tr class="test-SUCCESS">
                     <td colspan="2"></td>
                 <td width="130"><span class="top-level-step"><em>SUCCESS</em></span></td>
-                <td width="100"><span class="top-level-step"><em>3.33s</em></span></td>
+                <td width="100"><span class="top-level-step"><em>0.53s</em></span></td>
             </tr>
 
         </table>
