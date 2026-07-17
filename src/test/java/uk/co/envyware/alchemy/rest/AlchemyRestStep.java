@@ -114,6 +114,21 @@ public class AlchemyRestStep {
         );
     }
 
+    @When("I upload a platform")
+    public void postToPlatforms() {
+        this.alchemyAPI.uploadUnauthenticatedPlatform();
+    }
+
+    @When("I upload an exam")
+    public void postToExams() {
+        this.alchemyAPI.uploadUnauthenticatedExam();
+    }
+
+    @When("I upload a question set")
+    public void postToQuestions() {
+        this.alchemyAPI.uploadUnauthenticatedQuestions();
+    }
+
 
 
 }

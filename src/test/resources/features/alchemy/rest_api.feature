@@ -44,3 +44,15 @@ Feature: Alchemy REST API page
         And there should be 65 questions
         And the questions should be for the Administrator exam
         And the questions should be in the Automation category
+
+    Scenario: Checking unauthenticated post to platforms end point fails
+        When I upload a platform
+        Then the response should give code 401
+
+    Scenario: Checking unauthenticated post to exams end point fails
+        When I upload an exam
+        Then the response should give code 401
+
+    Scenario: Checking unauthenticated post to questions end point fails
+        When I upload a question set
+        Then the response should give code 401

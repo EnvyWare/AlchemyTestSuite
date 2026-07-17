@@ -59,5 +59,20 @@ public class AlchemyAPI {
                 .get();
     }
 
+    @Step("Upload an unauthenticated platform")
+    public void uploadUnauthenticatedPlatform() {
+        SerenityRest.given().post(BASE_URL + PLATFORMS);
+    }
+
+    @Step("Upload an unauthenticated exam")
+    public void uploadUnauthenticatedExam() {
+        SerenityRest.given().post(BASE_URL + EXAMS);
+    }
+
+    @Step("Upload an unauthenticated questions")
+    public void uploadUnauthenticatedQuestions() {
+        SerenityRest.given().post(BASE_URL + QUESTIONS);
+    }
+
 
 }
